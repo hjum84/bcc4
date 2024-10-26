@@ -1,8 +1,9 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response
+import sqlite3
 import openai
 import os
-from dotenv import load_dotenv
 import datetime
+from dotenv import load_dotenv
+from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response
 
 # 환경 변수 로드
 load_dotenv()
@@ -11,8 +12,22 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Flask 애플리케이션 초기화
 app = Flask(__name__)
 
-# 사용자 정보 저장용 딕셔너리
-users = {}
+# 데이터베이스 초기화
+def init_db():
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            last_name TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+# 서버 시작 시 데이터베이스 초기화
+init_db()
 
 # 홈 경로에서 login.html 제공 (서버 실행 시 처음 표시되는 페이지)
 @app.route('/')
@@ -26,12 +41,16 @@ def register():
         last_name = request.form.get('last_name')
         email = request.form.get('email')
         
-        # 이미 등록된 사용자인지 확인
-        if email in users:
+        # 데이터베이스에 사용자 정보 저장
+        try:
+            conn = sqlite3.connect('users.db')
+            cursor = conn.cursor()
+            cursor.execute('INSERT INTO users (last_name, email) VALUES (?, ?)', (last_name, email))
+            conn.commit()
+            conn.close()
+        except sqlite3.IntegrityError:
             return "This email is already registered.", 400
         
-        # 사용자를 딕셔너리에 저장
-        users[email] = last_name
         return redirect(url_for('login'))  # 회원 등록 후 로그인 페이지로 리디렉션
     return render_template('register.html')
 
@@ -43,8 +62,14 @@ def login():
             last_name = request.form.get('last_name')
             email = request.form.get('email')
             
-            # 이메일과 성이 맞는지 확인
-            if email in users and users[email] == last_name:
+            # 데이터베이스에서 사용자 정보 확인
+            conn = sqlite3.connect('users.db')
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM users WHERE last_name = ? AND email = ?', (last_name, email))
+            user = cursor.fetchone()
+            conn.close()
+            
+            if user:
                 return redirect(url_for('index'))  # 로그인 성공 시 챗봇 페이지로 리디렉션
             else:
                 return "You are not registered. Please register the chatbot.", 400
@@ -83,7 +108,7 @@ def chat():
                 {"role": "system", "content": "You are an assistant that only answers questions related to BCC AI."},
                 {"role": "user", "content": user_message}
             ],
-            max_tokens=500  # 충분한 응답을 얻기 위해 500 토큰 정도로 설정
+            max_tokens=500
         )
         
         # GPT에서 응답을 받음
@@ -92,7 +117,7 @@ def chat():
         # 응답을 200단어 이내로 요약하기
         words = chatbot_reply.split()
         if len(words) > 200:
-            chatbot_reply = ' '.join(words[:200])  # 첫 200단어만 가져와서 잘라냄
+            chatbot_reply = ' '.join(words[:200])
 
         # 응답 객체 생성
         response = make_response(jsonify({"reply": chatbot_reply}))
@@ -107,9 +132,17 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# 등록된 사용자 보기 페이지
+@app.route('/users')
+def show_users():
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT last_name, email FROM users')
+    users = cursor.fetchall()
+    conn.close()
+    return jsonify(users)  # 모든 등록된 사용자 정보를 JSON 형태로 반환
+
+# Render 배포용 포트 설정
 if __name__ == '__main__':
-    # Render가 제공하는 포트에서 실행
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
-
-# Coded by Um 
