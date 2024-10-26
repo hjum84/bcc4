@@ -158,7 +158,7 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# 등록된 사용자 보기 페이지 (인증 필요)
+# 등록된 사용자 보기 페이지 (항상 인증 필요)
 @app.route('/users')
 @requires_auth
 def show_users():
@@ -167,7 +167,13 @@ def show_users():
     cursor.execute('SELECT last_name, email FROM users')
     users = cursor.fetchall()
     conn.close()
-    return jsonify(users)  # 모든 등록된 사용자 정보를 JSON 형태로 반환
+    
+    # JSON 응답 생성 및 캐시 방지 헤더 추가
+    response = jsonify(users)
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response  # 모든 등록된 사용자 정보를 JSON 형태로 반환
 
 # Render 배포용 포트 설정
 if __name__ == '__main__':
