@@ -3,7 +3,8 @@ import openai
 import os
 import datetime
 from dotenv import load_dotenv
-from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response
+from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response, Response
+from functools import wraps
 
 # 환경 변수 로드
 load_dotenv()
@@ -11,6 +12,31 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Flask 애플리케이션 초기화
 app = Flask(__name__)
+
+# Basic Auth 인증 설정
+AUTHORIZED_USERNAME = os.getenv("AUTH_USERNAME", "admin")  # 기본값: admin
+AUTHORIZED_PASSWORD = os.getenv("AUTH_PASSWORD", "wispsevaluation")  # 기본값: password
+
+def check_auth(username, password):
+    """지정된 사용자 인증을 확인합니다."""
+    return username == AUTHORIZED_USERNAME and password == AUTHORIZED_PASSWORD
+
+def authenticate():
+    """401 응답을 반환하여 기본 인증을 요청합니다."""
+    return Response(
+        'Could not verify your access level for that URL.\n'
+        'You have to login with proper credentials', 401,
+        {'WWW-Authenticate': 'Basic realm="Login Required"'}
+    )
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_auth(auth.username, auth.password):
+            return authenticate()
+        return f(*args, **kwargs)
+    return decorated
 
 # 데이터베이스 초기화
 def init_db():
@@ -132,8 +158,9 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# 등록된 사용자 보기 페이지
+# 등록된 사용자 보기 페이지 (인증 필요)
 @app.route('/users')
+@requires_auth
 def show_users():
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
