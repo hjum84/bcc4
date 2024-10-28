@@ -14,8 +14,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 app = Flask(__name__)
 
 # Basic Auth 인증 설정
-AUTHORIZED_USERNAME = os.getenv("AUTH_USERNAME", "admin")  # 기본값: admin
-AUTHORIZED_PASSWORD = os.getenv("AUTH_PASSWORD", "wispsevaluation")  # 기본값: password
+AUTHORIZED_USERNAME = os.getenv("AUTH_USERNAME")  # 기본값: admin
+AUTHORIZED_PASSWORD = os.getenv("AUTH_PASSWORD")  # 기본값: password
 
 def check_auth(username, password):
     """지정된 사용자 인증을 확인합니다."""
@@ -158,7 +158,7 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# 등록된 사용자 보기 페이지 (항상 인증 필요)
+# 등록된 사용자 보기 페이지 (인증 필요)
 @app.route('/users')
 @requires_auth
 def show_users():
@@ -167,13 +167,7 @@ def show_users():
     cursor.execute('SELECT last_name, email FROM users')
     users = cursor.fetchall()
     conn.close()
-    
-    # JSON 응답 생성 및 캐시 방지 헤더 추가
-    response = jsonify(users)
-    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
-    return response  # 모든 등록된 사용자 정보를 JSON 형태로 반환
+    return jsonify(users)  # 모든 등록된 사용자 정보를 JSON 형태로 반환
 
 # Render 배포용 포트 설정
 if __name__ == '__main__':
