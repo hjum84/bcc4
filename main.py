@@ -10,6 +10,10 @@ from functools import wraps
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+# content_summary.txt에서 요약된 내용을 로드
+with open("content_summary.txt", "r", encoding="utf-8") as f:
+    content_summary = f.read()
+    
 # Flask 애플리케이션 초기화
 app = Flask(__name__)
 
@@ -131,7 +135,7 @@ def chat():
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are an assistant that only answers questions related to BCC AI."},
+                {"role": "system", "content": f"You are an assistant that only answers questions based on the following content: {content_summary}"},
                 {"role": "user", "content": user_message}
             ],
             max_tokens=500
