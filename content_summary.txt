@@ -1,5 +1,6 @@
 Building Coaching Competency
-A Learning Program for NYC Child Welfare and Juvenile Justice Administrators
+A Learning Program for NYC Child Welfare
+ and Juvenile Justice Administrators
 Learning Objectives
 After participating in this program, you will be able to:
 
@@ -7,7 +8,29 @@ Identify how the coach approach is applied in supervision
 Describe the steps to successful coaching
 Understand how to apply the coaching skills
 Support the widespread use of coaching throughout child welfare and juvenile justice
-2
+
+
+Coaching Process
+1. Center Together
+Center together in order for the coach and coachee to clear their minds and be present and focused together in the coaching session.
+
+2. Clarify the Focus
+Clarify the focus for the coaching session today. This step allows the coachee to describe their need and interest level.
+
+3. Identify the Goal
+The coach can state and the coachee can paraphrase the specific goal. Craft the goal to meet SMART criteria (Specific, Measurable, Achievable, Relevant, and Time-Bound).
+
+4. Develop an Action Plan
+Develop an action plan to articulate the steps the coachee determines they need to take in order to achieve their goal. Identify the tasks that when achieved will lead to goal achievement.
+
+5. Gain Commitment
+Gain commitment to get buy-in from the coachee so that they have the desire to follow through with their action plan. Be specific.
+
+6. Assess Progress
+Assess progress to check in about how the plan is going. This also includes checking in about the helpfulness of the coaching process.
+
+
+
 9/10/2020
 Building Coaching Competency
 Zoom Rules of the Road
@@ -124,7 +147,8 @@ Coaching
 Building Coaching Competency
 Coaching is…
 Proactive: In order to stay ahead of problems
-Performance enhancing: In order to improve employee performance
+Performance enhancing: 
+In order to improve employee performance
 Strengths building: In order to maximize and reinforce the employee’s strengths
 Support for making changes: In order to encourage productive change
 Coaching Can Take Many Forms
@@ -135,10 +159,14 @@ Building Coaching Competency
 
 
 
-Coaching supports supervision
-Coaching supports implementation of new    practices and policies
-Coaching supports transfer of learning
-Coaching applies to all the work you do
+Coaching supports 
+supervision
+Coaching supports implementation of new 
+   practices and policies
+Coaching supports transfer 
+of learning
+Coaching applies to all 
+the work you do
 Coaching
 Cultural Humility
 Unit 3
@@ -170,7 +198,8 @@ Coaching Skills
 Building Coaching Competency
 Presence
 Listening
-Reflecting/Clarifying
+Reflecting/
+Clarifying
 Questioning
 Feedback
 Accountability
@@ -178,13 +207,15 @@ Coaching Process
 23
 9/10/2020
 Building Coaching Competency
-CoachingProcess
+Coaching
+Process
 (Initial)
 Coaching Process (ongoing)
 24
 9/10/2020
 Building Coaching Competency
-CoachingProcess
+Coaching
+Process
 (ongoing)
 Coaching Feedback Format
 25
@@ -199,9 +230,12 @@ Discussing Trust
 27
 9/10/2020
 Building Coaching Competency
-What is important about building a trusting relationship? What if you don’t? 
+What is important about building a trusting relationship? 
+What if you don’t? 
 How do you build a trusting relationship?
-What challenges exist to creating trust in your agency?
+What challenges exist 
+to creating trust 
+in your agency?
 Building a Trusting Relationship
 Trust is essential to keeping the coaching conversation real.
 Trust is established through:
@@ -217,7 +251,8 @@ How to be Present
 Building Coaching Competency
 What does it mean to be present?
 What gets in the way of being present?
-How is being present important?
+How is being 
+present important?
 What are ways of showing you are present?
 Guidelines for Engaged Listening
 Put aside distractions
@@ -292,7 +327,8 @@ Demonstration Debrief
 39
 9/10/2020
 Building Coaching Competency
-In what ways did Ilani, the Supervisor, demonstrate the skills of Reflecting & Clarifying?
+In what ways did Ilani, the Supervisor, demonstrate the 
+skills of Reflecting & Clarifying?
 
 Questioning
 Unit 6
@@ -301,9 +337,13 @@ Building Coaching Competency
 40
 Powerful Questions
 Explore with intention once trust is built
-Help to uncover insight to discover answers
-Build greater buy-in from staff, commitment to the solution, and more independence
-This is also how we want to work with clients and families
+Help to uncover insight to discover 
+answers
+Build greater buy-in from staff, 
+commitment to the solution, and 
+more independence
+This is also how we want to work with 
+clients and families
 41
 9/10/2020
 Building Coaching Competency
@@ -315,7 +355,8 @@ They are real questions, not advice in disguise
 They come from sincere curiosity and respect
 They are not leading to a particular outcome
 They are open-ended and invite reflection
-They often begin with “what” and “how”
+They often begin with “what” 
+and “how”
 Top Ten Asking Mistakes
 43
 9/10/2020
@@ -330,14 +371,18 @@ Building Coaching Competency
 8
 9
 10
-Closed Questions
+Closed 
+Questions
 Directive Questions
-One-true Question
+One-true 
+Question
 Rambling Questions
 Interpretive Questions
 Rhetorical Questions
-Leading Questions
-Neglecting to Interrupt
+Leading 
+Questions
+Neglecting 
+to Interrupt
 Interrupting
 Why Questions
 Questioning Demonstration
@@ -409,8 +454,10 @@ Building Coaching Competency
 * Source: Boundless. “The Importance of Accountability.” Boundless Management. Boundless, 21 Jul. 2015. Retrieved 08 Dec. 2015
  
 Keys to Holding Accountability
-Clarity: What will you commit to? How will I hold you accountable?
-Ownership: Staff/team member sees how it’s in his/her best interest to fulfill their commitment
+Clarity: What will you commit to? How will I hold you accountable?
+
+Ownership: Staff/team member sees how it’s in his/her best interest to fulfill their commitment
+
 Follow-up: Coach must follow up
 Did you fulfill your commitment?
 If not, what needs to happen for you to fulfill it?
