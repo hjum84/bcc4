@@ -25,6 +25,8 @@ body {
     overflow-y: auto;
     border-bottom: 1px solid #ddd;
     height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .message {
