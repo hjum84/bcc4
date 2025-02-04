@@ -2,24 +2,25 @@ import sqlite3
 import openai
 import os
 import datetime
+import smartsheet
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response, Response
 from functools import wraps
 
-# 환경 변수 로드
+# 환경 변수 로드 / Load environment variables
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# content_summary.txt에서 요약된 내용을 로드
+# content_summary.txt에서 요약된 내용을 로드 /Load content summary from file
 with open("content_summary.txt", "r", encoding="utf-8") as f:
     content_summary = f.read()
     
-# Flask 애플리케이션 초기화
+# Flask 애플리케이션 초기화 /Initialize Flask application
 app = Flask(__name__)
 
-# Basic Auth 인증 설정
-AUTHORIZED_USERNAME = os.getenv("AUTH_USERNAME")  # 기본값: admin
-AUTHORIZED_PASSWORD = os.getenv("AUTH_PASSWORD")  # 기본값: password
+# Basic Auth 인증 설정 /Basic Auth settings
+AUTHORIZED_USERNAME = os.getenv("AUTH_USERNAME")  # default: admin
+AUTHORIZED_PASSWORD = os.getenv("AUTH_PASSWORD")  # default: password
 
 def check_auth(username, password):
     """지정된 사용자 인증을 확인합니다."""
@@ -42,7 +43,7 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
-# 데이터베이스 초기화
+# 데이터베이스 초기화 / Initialize database
 def init_db():
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
@@ -59,12 +60,68 @@ def init_db():
 # 서버 시작 시 데이터베이스 초기화
 init_db()
 
-# 홈 경로에서 login.html 제공 (서버 실행 시 처음 표시되는 페이지)
+# --- NEW: Smartsheet Integration Setup ---
+# Expected environment variables:
+#   SMARTSHEET_ACCESS_TOKEN - Your Smartsheet API access token
+#   SMARTSHEET_SHEET_ID - The ID of the Smartsheet to add rows to
+#   SMARTSHEET_TIMESTAMP_COLUMN - Column ID for the timestamp
+#   SMARTSHEET_QUESTION_COLUMN  - Column ID for the user question
+#   SMARTSHEET_RESPONSE_COLUMN  - Column ID for the chatbot response
+SMARTSHEET_ACCESS_TOKEN = os.getenv("SMARTSHEET_ACCESS_TOKEN")
+SMARTSHEET_SHEET_ID = os.getenv("SMARTSHEET_SHEET_ID")
+SMARTSHEET_TIMESTAMP_COLUMN = os.getenv("SMARTSHEET_TIMESTAMP_COLUMN")
+SMARTSHEET_QUESTION_COLUMN = os.getenv("SMARTSHEET_QUESTION_COLUMN")
+SMARTSHEET_RESPONSE_COLUMN = os.getenv("SMARTSHEET_RESPONSE_COLUMN")
+
+# Convert column IDs to integers if provided
+if SMARTSHEET_TIMESTAMP_COLUMN:
+    SMARTSHEET_TIMESTAMP_COLUMN = int(SMARTSHEET_TIMESTAMP_COLUMN)
+if SMARTSHEET_QUESTION_COLUMN:
+    SMARTSHEET_QUESTION_COLUMN = int(SMARTSHEET_QUESTION_COLUMN)
+if SMARTSHEET_RESPONSE_COLUMN:
+    SMARTSHEET_RESPONSE_COLUMN = int(SMARTSHEET_RESPONSE_COLUMN)
+
+smartsheet_client = None
+if SMARTSHEET_ACCESS_TOKEN:
+    smartsheet_client = smartsheet.Smartsheet(SMARTSHEET_ACCESS_TOKEN)
+
+def record_in_smartsheet(user_question, chatbot_reply):
+    """
+    Record the user's question and chatbot response in Smartsheet.
+    A new row is added with the current timestamp, the user's question,
+    and the chatbot's reply.
+    """
+    if not smartsheet_client or not SMARTSHEET_SHEET_ID:
+        return
+
+    # Create a new row object
+    new_row = smartsheet.models.Row()
+    new_row.to_top = True
+    new_row.cells = [
+        {
+            'column_id': SMARTSHEET_TIMESTAMP_COLUMN,
+            'value': datetime.datetime.now().isoformat()
+        },
+        {
+            'column_id': SMARTSHEET_QUESTION_COLUMN,
+            'value': user_question
+        },
+        {
+            'column_id': SMARTSHEET_RESPONSE_COLUMN,
+            'value': chatbot_reply
+        }
+    ]
+    # Add the row to the specified Smartsheet
+    response = smartsheet_client.Sheets.add_rows(SMARTSHEET_SHEET_ID, [new_row])
+    return response
+# --- End of Smartsheet Integration Setup ---
+
+# 홈 경로에서 login.html 제공 (서버 실행 시 처음 표시되는 페이지) / Home route: redirect to login page
 @app.route('/')
 def home():
     return redirect(url_for('login'))  # 기본적으로 로그인 페이지로 리디렉션
 
-# 회원 등록 페이지
+# 회원 등록 페이지 / Registration route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -84,7 +141,7 @@ def register():
         return redirect(url_for('login'))  # 회원 등록 후 로그인 페이지로 리디렉션
     return render_template('register.html')
 
-# 로그인 페이지
+# 로그인 페이지 /Login route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     try:
@@ -108,19 +165,19 @@ def login():
     except Exception as e:
         return f"An error occurred: {str(e)}", 500
 
-# 챗봇 페이지 (로그인 성공 시 이동)
+# 챗봇 페이지 (로그인 성공 시 이동) / Chatbot interface route
 @app.route('/index')
 def index():
     return render_template('index.html')
 
-# 사용자 메시지에 대한 GPT 응답을 제공하는 엔드포인트
+# 사용자 메시지에 대한 GPT 응답을 제공하는 엔드포인트 / Chat endpoint for processing user messages
 @app.route('/chat', methods=['POST'])
 def chat():
     user_message = request.json.get("message")
     if not user_message:
         return jsonify({"error": "A question is required."}), 400
 
-    # 쿠키에서 쿼타 확인
+    # 쿠키에서 쿼타 확인 / Check quota using cookie
     quota = request.cookies.get('chat_quota')
     if quota:
         quota = int(quota)
@@ -144,10 +201,17 @@ def chat():
         # GPT에서 응답을 받음
         chatbot_reply = response['choices'][0]['message']['content'].strip()
 
-        # 응답을 200단어 이내로 요약하기
+        # 응답을 200단어 이내로 요약하기 / Truncate response to 200 words if necessary
         words = chatbot_reply.split()
         if len(words) > 200:
             chatbot_reply = ' '.join(words[:200])
+        
+         # --- NEW: Record the conversation in Smartsheet ---
+        try:
+            record_in_smartsheet(user_message, chatbot_reply)
+        except Exception as smex:
+            print("Error recording in Smartsheet:", smex)
+        # --- End of Smartsheet recording ---
 
         # 응답 객체 생성
         response = make_response(jsonify({"reply": chatbot_reply}))
@@ -162,7 +226,7 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# 등록된 사용자 보기 페이지 (인증 필요)
+# 등록된 사용자 보기 페이지 (인증 필요) / Protected route to view registered users (requires Basic Auth)
 @app.route('/users')
 @requires_auth
 def show_users():
