@@ -55,7 +55,9 @@
             const chatBox = document.getElementById('chat-box');
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message', sender);
-            messageDiv.innerHTML = `<p>${message}</p>`;
+             // Replace newline characters with <br> for improved visual formatting
+            const formattedMessage = message.replace(/\n/g, '<br>');
+            messageDiv.innerHTML = `<p>${formattedMessage}</p>`;
             chatBox.appendChild(messageDiv);
             chatBox.scrollTop = chatBox.scrollHeight; // 스크롤을 아래로 자동으로 내림
         }

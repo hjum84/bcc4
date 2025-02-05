@@ -184,7 +184,7 @@ def chat():
     else:
         quota = 0
 
-    if quota >= 3:
+    if quota >= 30:
         return jsonify({"reply": "You have used all your quota for today."}), 200
 
     # GPT-3.5-turbo를 사용해 질문에 응답
@@ -204,7 +204,20 @@ def chat():
         # 응답을 200단어 이내로 요약하기 / Truncate response to 200 words if necessary
         words = chatbot_reply.split()
         if len(words) > 200:
-            chatbot_reply = ' '.join(words[:200])
+             # Get the first 200 words
+            truncated_text = ' '.join(words[:200])
+            # Determine the end position of this truncated text in the original reply
+            end_index = chatbot_reply.find(truncated_text) + len(truncated_text)
+            # Get the rest of the text after the truncated portion
+            rest_text = chatbot_reply[end_index:]
+            # Search for the first sentence-ending punctuation in the rest of the text
+            sentence_end = re.search(r'[.?!]', rest_text)
+            if sentence_end:
+                # Extend the reply to include up to the end of the sentence
+                chatbot_reply = chatbot_reply[:end_index + sentence_end.end()]
+            else:
+                chatbot_reply = truncated_text
+        # --- End of Updated Truncation Logic ---
         
          # --- NEW: Record the conversation in Smartsheet ---
         try:
