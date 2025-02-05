@@ -6,6 +6,7 @@ import smartsheet
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response, Response
 from functools import wraps
+import re
 
 # 환경 변수 로드 / Load environment variables
 load_dotenv()
@@ -201,7 +202,7 @@ def chat():
         # GPT에서 응답을 받음
         chatbot_reply = response['choices'][0]['message']['content'].strip()
 
-        # 응답을 300단어 이내로 요약하기 / Truncate response to 200 words if necessary
+        # 응답을 300단어 이내로 요약하기 / Truncate response to 300 words if necessary
         words = chatbot_reply.split()
         if len(words) > 300:
              # Get the first 300 words
