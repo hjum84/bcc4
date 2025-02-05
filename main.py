@@ -204,7 +204,7 @@ def chat():
 
         # 응답을 300단어 이내로 요약하기 / Truncate response to 300 words if necessary
         words = chatbot_reply.split()
-        if len(words) > 300:
+        if len(words) > 500:
              # Get the first 300 words
             truncated_text = ' '.join(words[:300])
             # Determine the end position of this truncated text in the original reply
