@@ -201,11 +201,11 @@ def chat():
         # GPT에서 응답을 받음
         chatbot_reply = response['choices'][0]['message']['content'].strip()
 
-        # 응답을 200단어 이내로 요약하기 / Truncate response to 200 words if necessary
+        # 응답을 300단어 이내로 요약하기 / Truncate response to 200 words if necessary
         words = chatbot_reply.split()
-        if len(words) > 200:
-             # Get the first 200 words
-            truncated_text = ' '.join(words[:200])
+        if len(words) > 300:
+             # Get the first 300 words
+            truncated_text = ' '.join(words[:300])
             # Determine the end position of this truncated text in the original reply
             end_index = chatbot_reply.find(truncated_text) + len(truncated_text)
             # Get the rest of the text after the truncated portion
