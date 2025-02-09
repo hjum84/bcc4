@@ -1,74 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Chatbot</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Chatbot</title>
+  <!-- Link to your stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <!-- NEW: Include marked.js to process Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div class="chat-container">
-        <div id="chat-box" class="chat-box"></div>
-        <div class="input-container">
-            <input type="text" id="userInput" placeholder="Type your message here...">
-            <button id="sendBtn" onclick="sendMessage()">Send</button>
-        </div>
+  <div class="chat-container">
+    <div id="chat-box" class="chat-box"></div>
+    <div class="input-container">
+      <input type="text" id="userInput" placeholder="Type your message here...">
+      <button id="sendBtn" onclick="sendMessage()">Send</button>
     </div>
+  </div>
 
-    <script>
-        // Display welcome message when page loads
-        window.onload = function() {
-            addMessage("Hi, I'm the BCC chatbot. I can answer up to 3 questions related to coaching per day!", 'bot');
-        }
+  <script>
+    // Display welcome message when page loads
+    window.onload = function() {
+      addMessage("Hi, I'm the BCC chatbot. I can answer up to 3 questions related to coaching per day!", 'bot');
+    }
 
-         // Add an event listener to trigger sendMessage() when the Enter key is pressed
+    // Add event listener so that pressing Enter sends the message
     document.getElementById('userInput').addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          sendMessage();
+      if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+
+    function sendMessage() {
+      const userInput = document.getElementById('userInput');
+      const message = userInput.value;
+      if (message.trim() === '') return; // Don't send empty messages
+
+      // Add user's message to chat
+      addMessage(message, 'user');
+      userInput.value = ''; // Clear input field
+
+      // Send user message to backend server
+      fetch('/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: message }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.reply) {
+          addMessage(data.reply, 'bot');
+        } else {
+          addMessage("Error: " + data.error, 'bot');
         }
+      })
+      .catch(error => {
+        addMessage("Network error: " + error, 'bot');
       });
+    }
 
-        function sendMessage() {
-            const userInput = document.getElementById('userInput');
-            const message = userInput.value;
-            if (message.trim() === '') return; // 빈 값은 전송 안 함
-
-            // Add user's message to chat
-            addMessage(message, 'user');
-            userInput.value = ''; // 입력창 비우기
-
-            // Send user message to backend server
-            fetch('/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: message }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.reply) {
-                    addMessage(data.reply, 'bot');
-                } else {
-                    addMessage("Error: " + data.error, 'bot');
-                }
-            })
-            .catch(error => {
-                addMessage("Network error: " + error, 'bot');
-            });
-        }
-
-        function addMessage(message, sender) {
-            const chatBox = document.getElementById('chat-box');
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender);
-             // Replace newline characters with <br> for improved visual formatting
-            const formattedMessage = message.replace(/\n/g, '<br>');
-            messageDiv.innerHTML = `<p>${formattedMessage}</p>`;
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight; // 스크롤을 아래로 자동으로 내림
-        }
-    </script>
+    function addMessage(message, sender) {
+      const chatBox = document.getElementById('chat-box');
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', sender);
+      
+      // NEW: Process the message through marked.js to convert Markdown to HTML
+      // This replaces any Markdown syntax like **bold text** with corresponding HTML (<strong>bold text</strong>)
+      const formattedMessage = marked.parseInline(message);
+      
+      // We still replace newline characters with <br> to preserve line breaks.
+      // If needed, you could also integrate that into the Markdown processing.
+      messageDiv.innerHTML = `<p>${formattedMessage.replace(/\n/g, '<br>')}</p>`;
+      
+      chatBox.appendChild(messageDiv);
+      chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+    }
+  </script>
 </body>
 </html>
