@@ -95,6 +95,7 @@ textarea#userInput {
     cursor: pointer;
     border: none;
     background-color: #0084ff;
+    text-align: center;  /* Center text horizontally */
     color: white;
     border-radius: 5px;
 }
@@ -111,10 +112,12 @@ button {
 /* Adjust layout for screens 480px wide or less */
 @media (max-width: 480px) {
     .send-btn {
-      width: 45px;
-      height: 30px;
-      font-size: 12px;
-      margin-left: 5px;                    /* Reduce margin on smaller screens */
+      width: 50px;
+      height: 35px;
+      font-size: 14px;
+      margin-left: 10px;                    /* Reduce margin on smaller screens */
+      text-align: center;  /* Center text horizontally */
+      line-height: 35px;   /* Center text vertically (matches the button height) */
     }
     textarea#userInput {
       /* Adjust width to account for the smaller send button and margin */
