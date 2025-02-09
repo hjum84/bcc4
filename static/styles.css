@@ -73,7 +73,7 @@ body {
 
 /* Auto-resizing textarea for message input */
 textarea#userInput {
-    flex: 1;  /* Takes available horizontal space */
+    flex-grow: 1;  /* Takes available horizontal space */
     padding: 10px;
     font-size: 12px;
     border: 1px solid #ddd;
@@ -81,15 +81,17 @@ textarea#userInput {
     overflow: hidden;  /* Hide scrollbars */
     resize: none;      /* Disable manual resizing */
     box-sizing: border-box;
+    letter-spacing: 0;    /* Set letter spacing to default */
+    word-spacing: normal; /* Set word spacing to normal */
 }
 
 /* Send button: remains fixed to the right of the textarea */
 .send-btn {
     flex-shrink: 0;    /* Do not let the button shrink */
     margin-left: 10px;  /* Space between textarea and button */
-    width: 60px;
-    height: 40px;
-    font-size: 12px;
+    width: 50px;
+    height: 35px;
+    font-size: 14px;
     cursor: pointer;
     border: none;
     background-color: #0084ff;
