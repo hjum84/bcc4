@@ -115,12 +115,13 @@ button {
       width: 50px;
       height: 35px;
       font-size: 14px;
-      margin-left: 10px;                    /* Reduce margin on smaller screens */
-      text-align: center;  /* Center text horizontally */
-      line-height: 35px;   /* Center text vertically (matches the button height) */
+      margin-left: 10px;
+      display: flex;              /* Use flexbox for centering */
+      justify-content: center;    /* Center horizontally */
+      align-items: center;        /* Center vertically */
     }
     textarea#userInput {
-      /* Adjust width to account for the smaller send button and margin */
       width: calc(100% - 55px);
     }
   }
+  
