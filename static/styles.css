@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-/* Container for the chat interface */
+/* Container for the entire chat interface */
 .chat-container {
     width: 400px;
     max-width: 100%;
@@ -61,33 +61,33 @@ body {
     border-bottom-right-radius: 0;
 }
 
-/* Input container for the message input and send button */
+/* Input container with relative positioning */
 .input-container {
     position: relative;
-    min-height: 50px; /* Ensures a minimum height for the container */
     padding: 10px;
     background-color: #fff;
     border-top: 1px solid #ddd;
+    /* Ensure the container has a minimum height so the button is visible */
+    min-height: 60px;
 }
 
-/* Styling for the textarea (message input) */
+/* Styling for the auto-resizing textarea (message input) */
 textarea#userInput {
-    width: calc(100% - 80px); /* Leaves space for the send button */
+    width: calc(100% - 80px);  /* Leave enough space on the right for the send button */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    overflow: hidden;  /* Hides scrollbars */
-    resize: none;      /* Disables manual resizing */
+    overflow: hidden;  /* Hide scrollbars */
+    resize: none;      /* Disable manual resizing */
     box-sizing: border-box;
-    vertical-align: top;
 }
 
-/* Styling for the send button */
+/* Send button fixed at the top-right of the input container */
 .send-btn {
     position: absolute;
-    right: 10px;
-    bottom: 10px; /* Fixed position so it doesn't move as the textarea expands */
+    top: 10px;    /* Align with container padding */
+    right: 10px;  /* Align with container padding */
     width: 60px;
     height: 40px;
     font-size: 16px;
@@ -96,6 +96,7 @@ textarea#userInput {
     background-color: #0084ff;
     color: white;
     border-radius: 5px;
+    /* The button will not move even if the textarea expands vertically */
 }
 
 /* Hover effect for the send button */
@@ -103,7 +104,7 @@ textarea#userInput {
     background-color: #006bbd;
 }
 
-/* (Optional) Styling for any generic button if needed */
+/* Optional generic button styling */
 button {
     cursor: pointer;
 }
