@@ -188,10 +188,10 @@ def chat():
     if quota >= 30:
         return jsonify({"reply": "You have used all your quota for today."}), 200
 
-    # GPT-3.5-turbo를 사용해 질문에 응답
+    # gpt-4o-mini를 사용해 질문에 응답
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": f"You are an assistant that only answers questions based on the following content: {content_summary}"},
                 {"role": "user", "content": user_message}
