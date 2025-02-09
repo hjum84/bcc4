@@ -185,7 +185,7 @@ def chat():
     else:
         quota = 0
 
-    if quota >= 30:
+    if quota >= 300:
         return jsonify({"reply": "You have used all your quota for today."}), 200
 
     # gpt-4o-mini를 사용해 질문에 응답

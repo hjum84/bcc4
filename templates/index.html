@@ -4,44 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Chatbot</title>
-  <!-- Link to your stylesheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <!-- NEW: Include marked.js to process Markdown -->
+  <!-- Optional: Include marked.js if you are using Markdown formatting -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <div class="chat-container">
     <div id="chat-box" class="chat-box"></div>
     <div class="input-container">
-      <input type="text" id="userInput" placeholder="Type your message here...">
-      <button id="sendBtn" onclick="sendMessage()">Send</button>
+      <!-- Use a textarea for multi-line input -->
+      <textarea id="userInput" placeholder="Type your message here..." rows="1"></textarea>
+      <!-- Add a class "send-btn" to the button for fixed positioning -->
+      <button id="sendBtn" class="send-btn" onclick="sendMessage()">Send</button>
     </div>
   </div>
 
   <script>
-    // Display welcome message when page loads
-    window.onload = function() {
-      addMessage("Hi, I'm the BCC chatbot. I can answer up to 3 questions related to coaching per day!", 'bot');
-    }
+    // Auto-resize the textarea as the user types.
+    var textarea = document.getElementById('userInput');
+    textarea.addEventListener('input', function() {
+      this.style.height = 'auto';                 // Reset height
+      this.style.height = this.scrollHeight + 'px'; // Adjust height to content
+    });
 
-    // Add event listener so that pressing Enter sends the message
+    // Allow sending the message when pressing Enter (unless Shift+Enter is used)
     document.getElementById('userInput').addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();  // Prevent newline insertion
         sendMessage();
       }
     });
 
+    // Function to send the message to the backend
     function sendMessage() {
       const userInput = document.getElementById('userInput');
       const message = userInput.value;
-      if (message.trim() === '') return; // Don't send empty messages
+      if (message.trim() === '') return; // Do nothing if the textarea is empty
 
-      // Add user's message to chat
+      // Display the user's message in the chat
       addMessage(message, 'user');
-      userInput.value = ''; // Clear input field
+      userInput.value = '';  // Clear the textarea
+      userInput.style.height = 'auto';  // Reset height after clearing
 
-      // Send user message to backend server
+      // Send the message to the backend
       fetch('/chat', {
         method: 'POST',
         headers: {
@@ -62,21 +67,23 @@
       });
     }
 
+    // Function to add a message to the chat box
     function addMessage(message, sender) {
       const chatBox = document.getElementById('chat-box');
       const messageDiv = document.createElement('div');
       messageDiv.classList.add('message', sender);
       
-      // NEW: Process the message through marked.js to convert Markdown to HTML
-      // This replaces any Markdown syntax like **bold text** with corresponding HTML (<strong>bold text</strong>)
-      const formattedMessage = marked.parseInline(message);
-      
-      // We still replace newline characters with <br> to preserve line breaks.
-      // If needed, you could also integrate that into the Markdown processing.
-      messageDiv.innerHTML = `<p>${formattedMessage.replace(/\n/g, '<br>')}</p>`;
+      // Process the message for Markdown formatting and newline conversion
+      const formattedMessage = marked.parseInline ? marked.parseInline(message).replace(/\n/g, '<br>') : message.replace(/\n/g, '<br>');
+      messageDiv.innerHTML = `<p>${formattedMessage}</p>`;
       
       chatBox.appendChild(messageDiv);
       chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+    }
+
+    // Display welcome message when the page loads
+    window.onload = function() {
+      addMessage("Hi, I'm the BCC chatbot. I can answer up to 3 questions related to coaching per day!", 'bot');
     }
   </script>
 </body>

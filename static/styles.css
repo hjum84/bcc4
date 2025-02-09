@@ -1,3 +1,4 @@
+/* Base styling for the body */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -8,6 +9,7 @@ body {
     margin: 0;
 }
 
+/* Container for the chat interface */
 .chat-container {
     width: 400px;
     max-width: 100%;
@@ -19,6 +21,7 @@ body {
     flex-direction: column;
 }
 
+/* Chat box where messages are displayed */
 .chat-box {
     flex-grow: 1;
     padding: 10px;
@@ -29,6 +32,7 @@ body {
     flex-direction: column;
 }
 
+/* Styling for individual messages */
 .message {
     margin: 10px 0;
     max-width: 75%;
@@ -41,13 +45,7 @@ body {
     margin: 0;
 }
 
-.user {
-    background-color: #0084ff;
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 0;
-}
-
+/* Bot messages aligned to the left */
 .bot {
     background-color: #e5e5ea;
     color: #000;
@@ -55,31 +53,57 @@ body {
     border-bottom-left-radius: 0;
 }
 
-.input-container {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    background-color: #fff;
+/* User messages aligned to the right */
+.user {
+    background-color: #0084ff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
 }
 
-#userInput {
-    flex-grow: 1;
+/* Input container for the message input and send button */
+.input-container {
+    position: relative;
+    min-height: 50px; /* Ensures a minimum height for the container */
     padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+/* Styling for the textarea (message input) */
+textarea#userInput {
+    width: calc(100% - 80px); /* Leaves space for the send button */
+    padding: 10px;
+    font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    outline: none;
+    overflow: hidden;  /* Hides scrollbars */
+    resize: none;      /* Disables manual resizing */
+    box-sizing: border-box;
+    vertical-align: top;
 }
 
-button {
-    margin-left: 10px;
-    padding: 10px;
+/* Styling for the send button */
+.send-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px; /* Fixed position so it doesn't move as the textarea expands */
+    width: 60px;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
     border: none;
     background-color: #0084ff;
     color: white;
-    cursor: pointer;
     border-radius: 5px;
 }
 
-button:hover {
+/* Hover effect for the send button */
+.send-btn:hover {
     background-color: #006bbd;
+}
+
+/* (Optional) Styling for any generic button if needed */
+button {
+    cursor: pointer;
 }
