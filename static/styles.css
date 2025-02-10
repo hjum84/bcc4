@@ -75,7 +75,8 @@ body {
 textarea#userInput {
     flex-grow: 1;  /* Takes available horizontal space */
     padding: 10px;
-    font-size: 12px;
+    font-family: Arial, sans-serif;  /* Explicitly set font family */ 
+    font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;  /* Hide scrollbars */
