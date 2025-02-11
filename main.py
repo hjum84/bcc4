@@ -235,8 +235,11 @@ def delete_registration():
         # Serve the deletion form when accessed via GET.
         return render_template('delete_registration.html')
     
-    # For POST: support JSON or form data
-    data = request.get_json() or request.form
+    # CHANGE: Use get_json(silent=True) to avoid errors if the Content-Type is not application/json.
+    data = request.get_json(silent=True)
+    if data is None:
+        data = request.form
+
     email = data.get('email')
     last_name = data.get('last_name')
 
@@ -265,6 +268,7 @@ def delete_registration():
         session.close()
 
     return message, status_code
+
 
 # 등록된 사용자 보기 페이지 (인증 필요) / Protected route to view registered users (requires Basic Auth)
 @app.route('/users')
