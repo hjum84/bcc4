@@ -113,3 +113,5 @@ wcwidth==0.2.13
 websockets==12.0
 Werkzeug==3.0.4
 yarl==1.15.5
+SQLAlchemy
+psycopg2-binary

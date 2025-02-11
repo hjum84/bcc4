@@ -1,4 +1,3 @@
-import sqlite3
 import openai
 import os
 import datetime
@@ -7,6 +6,7 @@ from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response, Response
 from functools import wraps
 import re
+from models import SessionLocal, User
 
 # 환경 변수 로드 / Load environment variables
 load_dotenv()
@@ -43,23 +43,6 @@ def requires_auth(f):
             return authenticate()
         return f(*args, **kwargs)
     return decorated
-
-# 데이터베이스 초기화 / Initialize database
-def init_db():
-    conn = sqlite3.connect('users.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            last_name TEXT NOT NULL,
-            email TEXT NOT NULL UNIQUE
-        )
-    ''')
-    conn.commit()
-    conn.close()
-
-# 서버 시작 시 데이터베이스 초기화
-init_db()
 
 # --- NEW: Smartsheet Integration Setup ---
 # Expected environment variables:
@@ -122,44 +105,46 @@ def record_in_smartsheet(user_question, chatbot_reply):
 def home():
     return redirect(url_for('login'))  # 기본적으로 로그인 페이지로 리디렉션
 
-# 회원 등록 페이지 / Registration route
+# 회원 등록 페이지 / Registration route (Modified for PostgreSQL)
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         last_name = request.form.get('last_name')
         email = request.form.get('email')
+        session = SessionLocal() ### CHANGE: Using SQLAlchemy session instead of sqlite3.connect
         
         # 데이터베이스에 사용자 정보 저장
         try:
-            conn = sqlite3.connect('users.db')
-            cursor = conn.cursor()
-            cursor.execute('INSERT INTO users (last_name, email) VALUES (?, ?)', (last_name, email))
-            conn.commit()
-            conn.close()
-        except sqlite3.IntegrityError:
+            # Create a new user record. The 'visit_count' defaults to 0 (as defined in models.py)            
+            new_user = User(last_name=last_name, email=email)
+            session.add(new_user)
+            session.commit()
+        except Exception as e:
+            session.rollback()
+            session.close()
             return "This email is already registered.", 400
-        
+        session.close()     
         return redirect(url_for('login'))  # 회원 등록 후 로그인 페이지로 리디렉션
     return render_template('register.html')
 
-# 로그인 페이지 /Login route
+# 로그인 페이지 /Login route (Modified to Update Visit Count Using SQLAlchemy)
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     try:
         if request.method == 'POST':
             last_name = request.form.get('last_name')
             email = request.form.get('email')
-            
-            # 데이터베이스에서 사용자 정보 확인
-            conn = sqlite3.connect('users.db')
-            cursor = conn.cursor()
-            cursor.execute('SELECT * FROM users WHERE last_name = ? AND email = ?', (last_name, email))
-            user = cursor.fetchone()
-            conn.close()
-            
+            session = SessionLocal()  ### CHANGE: Using SQLAlchemy session for login
+           # Query the database for the user based on last_name and email
+            user = session.query(User).filter(User.last_name == last_name, User.email == email).first()
             if user:
+                # Increment the visit count by 1 each time the user logs in
+                user.visit_count += 1  ### CHANGE: Update visit_count for tracking visits
+                session.commit()
+                session.close()                
                 return redirect(url_for('index'))  # 로그인 성공 시 챗봇 페이지로 리디렉션
             else:
+                session.close()
                 return "You are not registered. Please register the chatbot.", 400
         return render_template('login.html')
     
@@ -244,12 +229,12 @@ def chat():
 @app.route('/users')
 @requires_auth
 def show_users():
-    conn = sqlite3.connect('users.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT last_name, email FROM users')
-    users = cursor.fetchall()
-    conn.close()
-    return jsonify(users)  # 모든 등록된 사용자 정보를 JSON 형태로 반환
+    session = SessionLocal()  ### CHANGE: Using SQLAlchemy session to retrieve users
+    users = session.query(User).all()
+    # Prepare output: list of dictionaries including visit_count for each user
+    user_list = [{"last_name": user.last_name, "email": user.email, "visit_count": user.visit_count} for user in users]
+    session.close()
+    return jsonify(user_list)  # 모든 등록된 사용자 정보를 JSON 형태로 반환
 
 # Render 배포용 포트 설정
 if __name__ == '__main__':
