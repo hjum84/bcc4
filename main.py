@@ -225,6 +225,47 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# Delete Registration Route
+# This route allows a user to delete their registration from the database.
+# In a real-world scenario, you'd want to secure this route further (e.g., requiring authentication).
+@app.route('/delete_registration', methods=['GET', 'POST'])
+@requires_auth
+def delete_registration():
+    if request.method == 'GET':
+        # Serve the deletion form when accessed via GET.
+        return render_template('delete_registration.html')
+    
+    # For POST: support JSON or form data
+    data = request.get_json() or request.form
+    email = data.get('email')
+    last_name = data.get('last_name')
+
+    if not email or not last_name:
+        return "Email and Last Name are required to delete registration.", 400
+
+    email = email.strip()
+    last_name = last_name.strip()
+
+    session = SessionLocal()
+    try:
+        user = session.query(User).filter(User.email == email, User.last_name == last_name).first()
+        if user:
+            session.delete(user)
+            session.commit()
+            message = "Your registration has been successfully removed."
+            status_code = 200
+        else:
+            message = "User not found. No registration to remove."
+            status_code = 404
+    except Exception as e:
+        session.rollback()
+        message = f"Error during deletion: {str(e)}"
+        status_code = 500
+    finally:
+        session.close()
+
+    return message, status_code
+
 # 등록된 사용자 보기 페이지 (인증 필요) / Protected route to view registered users (requires Basic Auth)
 @app.route('/users')
 @requires_auth
