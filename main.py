@@ -2,6 +2,8 @@ import openai
 import os
 import datetime
 import smartsheet
+import csv
+import io
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response, Response
 from functools import wraps
@@ -269,6 +271,35 @@ def delete_registration():
 
     return message, status_code
 
+#Export Users Route (CSV Export, Protected by Authentication)
+@app.route('/export_users', methods=['GET'])
+@requires_auth  # Protect this route so that only authorized users can export data
+def export_users():
+    # Create a new database session
+    session_db = SessionLocal()
+    users = session_db.query(User).all()
+    session_db.close()
+
+    # Create a StringIO object to hold CSV data in memory
+    output = io.StringIO()
+    writer = csv.writer(output)
+
+    # Write header row
+    writer.writerow(['Last Name', 'Email', 'Visit Count'])
+
+    # Write a row for each user
+    for user in users:
+        writer.writerow([user.last_name, user.email, user.visit_count])
+
+    # Get CSV content from the StringIO object
+    csv_content = output.getvalue()
+    output.close()
+
+    # Create a response with the CSV content and appropriate headers
+    response = make_response(csv_content)
+    response.headers['Content-Disposition'] = 'attachment; filename=users.csv'
+    response.headers['Content-Type'] = 'text/csv'
+    return response
 
 # 등록된 사용자 보기 페이지 (인증 필요) / Protected route to view registered users (requires Basic Auth)
 @app.route('/users')
