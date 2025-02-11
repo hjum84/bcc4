@@ -4,33 +4,34 @@ import datetime
 import smartsheet
 import csv
 import io
+import threading    # NEW: Imported threading for asynchronous tasks
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response, Response
 from functools import wraps
 import re
 from models import SessionLocal, User
 
-# 환경 변수 로드 / Load environment variables
+# Load environment variables
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# content_summary.txt에서 요약된 내용을 로드 /Load content summary from file
+# Load content summary from file
 with open("content_summary.txt", "r", encoding="utf-8") as f:
     content_summary = f.read()
     
-# Flask 애플리케이션 초기화 /Initialize Flask application
+# Initialize Flask application
 app = Flask(__name__)
 
-# Basic Auth 인증 설정 /Basic Auth settings
+# Basic Auth settings
 AUTHORIZED_USERNAME = os.getenv("AUTH_USERNAME")  # default: admin
 AUTHORIZED_PASSWORD = os.getenv("AUTH_PASSWORD")  # default: password
 
 def check_auth(username, password):
-    """지정된 사용자 인증을 확인합니다."""
+    """Check if a username/password combination is valid."""
     return username == AUTHORIZED_USERNAME and password == AUTHORIZED_PASSWORD
 
 def authenticate():
-    """401 응답을 반환하여 기본 인증을 요청합니다."""
+    """Sends a 401 response that enables basic auth"""
     return Response(
         'Could not verify your access level for that URL.\n'
         'You have to login with proper credentials', 401,
@@ -46,20 +47,13 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
-# --- NEW: Smartsheet Integration Setup ---
-# Expected environment variables:
-#   SMARTSHEET_ACCESS_TOKEN - Your Smartsheet API access token
-#   SMARTSHEET_SHEET_ID - The ID of the Smartsheet to add rows to
-#   SMARTSHEET_TIMESTAMP_COLUMN - Column ID for the timestamp
-#   SMARTSHEET_QUESTION_COLUMN  - Column ID for the user question
-#   SMARTSHEET_RESPONSE_COLUMN  - Column ID for the chatbot response
+# --- Smartsheet Integration Setup ---
 SMARTSHEET_ACCESS_TOKEN = os.getenv("SMARTSHEET_ACCESS_TOKEN")
 SMARTSHEET_SHEET_ID = os.getenv("SMARTSHEET_SHEET_ID")
 SMARTSHEET_TIMESTAMP_COLUMN = os.getenv("SMARTSHEET_TIMESTAMP_COLUMN")
 SMARTSHEET_QUESTION_COLUMN = os.getenv("SMARTSHEET_QUESTION_COLUMN")
 SMARTSHEET_RESPONSE_COLUMN = os.getenv("SMARTSHEET_RESPONSE_COLUMN")
 
-# Convert column IDs to integers if provided
 if SMARTSHEET_TIMESTAMP_COLUMN:
     SMARTSHEET_TIMESTAMP_COLUMN = int(SMARTSHEET_TIMESTAMP_COLUMN)
 if SMARTSHEET_QUESTION_COLUMN:
@@ -74,13 +68,12 @@ if SMARTSHEET_ACCESS_TOKEN:
 def record_in_smartsheet(user_question, chatbot_reply):
     """
     Record the user's question and chatbot response in Smartsheet.
-    A new row is added with the current timestamp, the user's question,
+    Adds a new row with the current timestamp, the user's question,
     and the chatbot's reply.
     """
     if not smartsheet_client or not SMARTSHEET_SHEET_ID:
         return
 
-    # Create a new row object
     new_row = smartsheet.models.Row()
     new_row.to_top = True
     new_row.cells = [
@@ -97,27 +90,24 @@ def record_in_smartsheet(user_question, chatbot_reply):
             'value': chatbot_reply
         }
     ]
-    # Add the row to the specified Smartsheet
     response = smartsheet_client.Sheets.add_rows(SMARTSHEET_SHEET_ID, [new_row])
     return response
 # --- End of Smartsheet Integration Setup ---
 
-# 홈 경로에서 login.html 제공 (서버 실행 시 처음 표시되는 페이지) / Home route: redirect to login page
+# Home route: redirect to login page
 @app.route('/')
 def home():
-    return redirect(url_for('login'))  # 기본적으로 로그인 페이지로 리디렉션
+    return redirect(url_for('login'))
 
-# 회원 등록 페이지 / Registration route (Modified for PostgreSQL)
+# Registration route (Modified for PostgreSQL)
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         last_name = request.form.get('last_name')
         email = request.form.get('email')
-        session = SessionLocal() ### CHANGE: Using SQLAlchemy session instead of sqlite3.connect
+        session = SessionLocal()  # Using SQLAlchemy session
         
-        # 데이터베이스에 사용자 정보 저장
         try:
-            # Create a new user record. The 'visit_count' defaults to 0 (as defined in models.py)            
             new_user = User(last_name=last_name, email=email)
             session.add(new_user)
             session.commit()
@@ -126,25 +116,23 @@ def register():
             session.close()
             return "This email is already registered.", 400
         session.close()     
-        return redirect(url_for('login'))  # 회원 등록 후 로그인 페이지로 리디렉션
+        return redirect(url_for('login'))
     return render_template('register.html')
 
-# 로그인 페이지 /Login route (Modified to Update Visit Count Using SQLAlchemy)
+# Login route (Modified to update visit count using SQLAlchemy)
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     try:
         if request.method == 'POST':
             last_name = request.form.get('last_name')
             email = request.form.get('email')
-            session = SessionLocal()  ### CHANGE: Using SQLAlchemy session for login
-           # Query the database for the user based on last_name and email
+            session = SessionLocal()  # Using SQLAlchemy session for login
             user = session.query(User).filter(User.last_name == last_name, User.email == email).first()
             if user:
-                # Increment the visit count by 1 each time the user logs in
-                user.visit_count += 1  ### CHANGE: Update visit_count for tracking visits
+                user.visit_count += 1
                 session.commit()
                 session.close()                
-                return redirect(url_for('index'))  # 로그인 성공 시 챗봇 페이지로 리디렉션
+                return redirect(url_for('index'))
             else:
                 session.close()
                 return "You are not registered. Please register the chatbot.", 400
@@ -153,19 +141,19 @@ def login():
     except Exception as e:
         return f"An error occurred: {str(e)}", 500
 
-# 챗봇 페이지 (로그인 성공 시 이동) / Chatbot interface route
+# Chatbot interface route
 @app.route('/index')
 def index():
     return render_template('index.html')
 
-# 사용자 메시지에 대한 GPT 응답을 제공하는 엔드포인트 / Chat endpoint for processing user messages
+# Chat endpoint for processing user messages
 @app.route('/chat', methods=['POST'])
 def chat():
     user_message = request.json.get("message")
     if not user_message:
         return jsonify({"error": "A question is required."}), 400
 
-    # 쿠키에서 쿼타 확인 / Check quota using cookie
+    # Check quota using cookie
     quota = request.cookies.get('chat_quota')
     if quota:
         quota = int(quota)
@@ -175,7 +163,6 @@ def chat():
     if quota >= 300:
         return jsonify({"reply": "You have used all your quota for today."}), 200
 
-    # gpt-4o-mini를 사용해 질문에 응답
     try:
         response = openai.ChatCompletion.create(
             model="gpt-4o-mini",
@@ -186,58 +173,48 @@ def chat():
             max_tokens=500
         )
         
-        # GPT에서 응답을 받음
         chatbot_reply = response['choices'][0]['message']['content'].strip()
 
-        # 응답을 300단어 이내로 요약하기 / Truncate response to 300 words if necessary
+        # Truncate response to 300 words if necessary
         words = chatbot_reply.split()
         if len(words) > 500:
-             # Get the first 300 words
             truncated_text = ' '.join(words[:300])
-            # Determine the end position of this truncated text in the original reply
             end_index = chatbot_reply.find(truncated_text) + len(truncated_text)
-            # Get the rest of the text after the truncated portion
             rest_text = chatbot_reply[end_index:]
-            # Search for the first sentence-ending punctuation in the rest of the text
             sentence_end = re.search(r'[.?!]', rest_text)
             if sentence_end:
-                # Extend the reply to include up to the end of the sentence
                 chatbot_reply = chatbot_reply[:end_index + sentence_end.end()]
             else:
                 chatbot_reply = truncated_text
-        # --- End of Updated Truncation Logic ---
-        
-         # --- NEW: Record the conversation in Smartsheet ---
-        try:
-            record_in_smartsheet(user_message, chatbot_reply)
-        except Exception as smex:
-            print("Error recording in Smartsheet:", smex)
-        # --- End of Smartsheet recording ---
 
-        # 응답 객체 생성
-        response = make_response(jsonify({"reply": chatbot_reply}))
+        # NEW: Record conversation in Smartsheet asynchronously to avoid slowing down the response.
+        def record_smartsheet_async(user_question, chatbot_reply):
+            try:
+                record_in_smartsheet(user_question, chatbot_reply)
+            except Exception as smex:
+                print("Error recording in Smartsheet:", smex)
 
-        # 쿠키 업데이트 (질문 횟수 증가)
+        threading.Thread(target=record_smartsheet_async, args=(user_message, chatbot_reply)).start()
+        # --- Change Made Here: Wrapped the record_in_smartsheet call in a background thread.
+
+        # Create the response object and update the chat quota cookie
+        response_obj = make_response(jsonify({"reply": chatbot_reply}))
         quota += 1
         expires = datetime.datetime.now() + datetime.timedelta(days=1)
-        response.set_cookie('chat_quota', str(quota), expires=expires)
+        response_obj.set_cookie('chat_quota', str(quota), expires=expires)
 
-        return response
+        return response_obj
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 # Delete Registration Route
-# This route allows a user to delete their registration from the database.
-# In a real-world scenario, you'd want to secure this route further (e.g., requiring authentication).
 @app.route('/delete_registration', methods=['GET', 'POST'])
 @requires_auth
 def delete_registration():
     if request.method == 'GET':
-        # Serve the deletion form when accessed via GET.
         return render_template('delete_registration.html')
     
-    # CHANGE: Use get_json(silent=True) to avoid errors if the Content-Type is not application/json.
     data = request.get_json(silent=True)
     if data is None:
         data = request.form
@@ -271,55 +248,44 @@ def delete_registration():
 
     return message, status_code
 
-#Export Users Route (CSV Export, Protected by Authentication)
+# Export Users Route (CSV Export, Protected by Authentication)
 @app.route('/export_users', methods=['GET'])
-@requires_auth  # Protect this route so that only authorized users can export data
+@requires_auth
 def export_users():
-    # Create a new database session
     session_db = SessionLocal()
     users = session_db.query(User).all()
     session_db.close()
 
-    # Create a StringIO object to hold CSV data in memory
     output = io.StringIO()
     writer = csv.writer(output)
-
-    # Write header row
     writer.writerow(['Last Name', 'Email', 'Visit Count'])
-
-    # Write a row for each user
     for user in users:
         writer.writerow([user.last_name, user.email, user.visit_count])
-
-    # Get CSV content from the StringIO object
     csv_content = output.getvalue()
     output.close()
 
-    # Create a response with the CSV content and appropriate headers
-    response = make_response(csv_content)
-    response.headers['Content-Disposition'] = 'attachment; filename=users.csv'
-    response.headers['Content-Type'] = 'text/csv'
-    return response
+    response_csv = make_response(csv_content)
+    response_csv.headers['Content-Disposition'] = 'attachment; filename=users.csv'
+    response_csv.headers['Content-Type'] = 'text/csv'
+    return response_csv
 
-# 등록된 사용자 보기 페이지 (인증 필요) / Protected route to view registered users (requires Basic Auth)
+# Protected route to view registered users
 @app.route('/users')
 @requires_auth
 def show_users():
-    session = SessionLocal()  ### CHANGE: Using SQLAlchemy session to retrieve users
+    session = SessionLocal()
     users = session.query(User).all()
-    # Prepare output: list of dictionaries including visit_count for each user
     user_list = [{"last_name": user.last_name, "email": user.email, "visit_count": user.visit_count} for user in users]
     session.close()
-    return jsonify(user_list)  # 모든 등록된 사용자 정보를 JSON 형태로 반환
+    return jsonify(user_list)
 
-# This new route serves the export.html page so that when you visit /export,
-# the page with the "Download CSV" button is rendered.
+# Export Page Route: renders export.html
 @app.route('/export')
 @requires_auth
 def export_page():
     return render_template('export.html')
 
-# Render 배포용 포트 설정
+# Run the application
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
