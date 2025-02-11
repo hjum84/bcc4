@@ -3,9 +3,14 @@ import os
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+load_dotenv()
 
 # Get the database URL from your Render environment (this is like your secret address)
 DATABASE_URL = os.getenv("DATABASE_URL")  # Render will give you this value
+
+# Debug: Print the value of DATABASE_URL to ensure it's loaded
+print("DATABASE_URL =", DATABASE_URL)
 
 # Create an engine that knows how to talk to PostgreSQL
 engine = create_engine(DATABASE_URL)
