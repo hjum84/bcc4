@@ -312,6 +312,13 @@ def show_users():
     session.close()
     return jsonify(user_list)  # 모든 등록된 사용자 정보를 JSON 형태로 반환
 
+# This new route serves the export.html page so that when you visit /export,
+# the page with the "Download CSV" button is rendered.
+@app.route('/export')
+@requires_auth
+def export_page():
+    return render_template('export.html')
+
 # Render 배포용 포트 설정
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
