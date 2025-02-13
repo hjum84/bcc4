@@ -9,7 +9,7 @@ Describe the steps to successful coaching
 Understand how to apply the coaching skills
 Support the widespread use of coaching throughout child welfare and juvenile justice
 
-*Coaching Skills: 
+*Coaching Skills: These skills are not linear! This is important because often people make this inference.
 1. Presence
    • Focused attention without distraction
    • 100% there
@@ -84,11 +84,9 @@ Assess progress to check in about how the plan is going. This also includes chec
 
 
 *Coaching Definition
- “Coaching is unlocking a person’s potential to maximize their own performance. It is helping them to learn rather than teaching them.”: Sir John Whitmore
-
-*Coaching
-Coaching is already well connected to the work your staff is doing with families. It supports a child-centered, family-focused approach.
-SAY:
+  “Coaching is unlocking a person’s potential to maximize their own performance. It is helping them to learn rather than teaching them.”: Sir John Whitmore
+ -ICF Coaching Definition
+  • The ICF (International Coaching Federation) defines coaching as "partnering with clients (staff) in a thought-provoking and creative process that inspires them to maximize their personal and professional potential."
  • Coaching is already well connected to the work your staff are doing with families – it supports a child-centered, family focused approach. 
  • You will see that many of the skills are the same as the motivational interviewing skills. 
  • You will hear us emphasize more than once about the parallel process 
@@ -120,6 +118,18 @@ Utilizing a Coaching Approach means:
  • Asking questions allows the coachee to come up with their own ideas (even if it’s the same idea you had in mind), which gives a much better sense of ownership and commitment when they put it into practice. 
  • The focus should be on the future more than the past and finding new options rather than staying stuck. This is similar to your staff working with families using strengths-based engagement techniques and motivational interviewing.
 
+*What is coaching in the context of the work we do?
+ • Coaching is proactive in order to stay ahead of problems
+ • It is performance enhancing in order to improve employee performance.
+ • It is strengths-based in order to maximize and reinforce the employee’s strengths.
+ • It is support for making changes in order to encourage productive change.
+ • It’s also a paradigm shift, a different way of working than we have done before. 
+
+*Supervision
+ • The coach supports the individual’s commitment to meeting their goals or addressing issues they have identified in addition to performance goals
+ • Special time and mutual commitment to coaching are key; this can be built into supervision meetings.
+ • The key emphasis is on inquiry rather than direction.
+ • Mindset, skillset, and coaching session flow are in the forefront.
 
 *What Supervisors are Saying
  “Traditionally, as supervisors we have tried to ‘fix the problem’ With coaching, we support our staff to come up with solutions themselves.”
@@ -127,7 +137,6 @@ Utilizing a Coaching Approach means:
  “Workers become more self-sufficient and ultimately are able to help families learn to become self-sufficient.”
  “You can use coaching strategies ‘anytime,’ not just in formal supervision.”
  “Coaching is not dictating to staff but working collaboratively.”
-
 
 *What do Supervisors Work on in Coaching?
  • Issues related to case planning and resident issues in detention
@@ -139,20 +148,11 @@ Utilizing a Coaching Approach means:
  • Dealing more effectively with change
  • Determining next steps
 
-*Coaching is...
- • Proactive: In order to stay ahead of problems
- • Performance enhancing: In order to improve employee performance
- • Strengths building: In order to maximize and reinforce the employee’s strengths
- • Support for making changes: In order to encourage productive change
- SAY:
- It IS proactive, enhancing performance goals and strengths. 
- • It provides support for making necessary changes. 
- • It’s also a paradigm shift, a different way of working than we have done before. 
- • Remind participants that Coaching is not intended for use as a remedial or disciplinary action. 
- • Some of you may have seen personnel policies that reference “coaching” employees when there are performance problems. 
- • The type of coaching we are describing has a more proactive approach. 
- • In this model, coaching helps the coachee identify performance goals, enhance strengths, and receive support for making necessary changes, hopefully preventing the need for corrective or disciplinary steps. 
- • Coaching in this context is intended as a strengths-based process.
+*Creating Systemic Change
+ • Coaching is part of a systemic change of how we can work together.
+ •  Coaching Mindset -> Coaching Skill Set -> Coaching Culture -> Coaching Skills Used Constantly
+   Coaching Mindset -> Coaching Skill Set -> Coaching Culture -> Coaching Sessions
+ • Together we can create a coaching culture (as many organizations have done) in which we all use the coach approach and conversations that help us to support each other’s learning, build on our strengths, and achieve better outcomes for children and families.)
 
 *Coaching Can Take Many Forms
  • Supervision:  Integrating coaching into supervision promotes a parallel process between how supervisors work the staff ad how staff works with families.
@@ -178,6 +178,27 @@ Utilizing a Coaching Approach means:
  • Checking power imbalances that exist in the coach-coachee relationship
  • Continuous engagement in self-reflection and self-critique as lifelong learners and reflective coaches
 
+* Implementation
+ • Coaching is helpful for effective implementation because:
+ • Newly learned behavior is rudimentary compared to performance by a master practitioner.
+ • Newly learned behavior is fragile and needs to be supported in the face of reactions from consumers and others.
+ • Newly learned behavior is underdeveloped and will need to be shaped to be most functional in a service setting.
+
+* Utilizing a coach approach means:
+ • Asking more questions and giving less direction.
+ • Focusing on strength and skill development over time, in addition to day-to-day instruction and oversight.
+  • Offering more affirming grounded assessment and feedback, with the intention of strengthening skills.
+ • Using language of commitment and holding team members accountable.
+  • Seeking feedback from team members on how to be more effective in all interactions.
+ •  Consciously modeling strengths-based leadership always.
+
+* Transfer of Learning
+  •  5% transfer a new skill into practice from learning a theory.
+  •  10% transfer a new skill into practice as a result of learning a theory and seeing it demonstrated.
+  •  20% transfer a new skill into practice as a result of theory, demonstration and practice during the training.
+  •  25% transfer a new skill into practice as a result of theory, demonstration, practice, and corrective feedback during the training.
+  •  90% transfer a new skill into practice as a result of theory, demonstration, practice, and corrective feedback during the training when it is followed up with job embedded coaching!
+
 *Building a Trusting Relationship
  Trust is essential to keeping the coaching conversation real.
  Trust is established through:
@@ -192,10 +213,24 @@ Utilizing a Coaching Approach means:
  Reminder, it takes time to build trust but not a lot of time to break it.
 
 *How to be Present
- • What does it mean to be present?
+ • What does it mean to be present? 
+   : Possible Responses: Focused on the situation, not distracted,attentive
  • What gets in the way of being present?
+   : Possible Responses: Competing demands on time, reports,compliance issues, crises, upper management requests, etc.
  • How is being present important?
+   : Possible Responses: The coachee knows that the situation/issue they have is important to me.
  • What are ways of showing you are present?
+   :Possible Responses: I pay attention to how I am sitting, take a deep breath, get centered with my coachee, turn off phones and computers, move away from other distractions.
+
+*How do you listen in an engaged manner?
+ • There is power in being heard because it is so rare for someone to give you their focused attention. Think of a time you felt heard. How did you feel? How did you know you were being heard?
+ • Listening requires more than hearing words.
+ • It requires a desire to understand another human being, an attitude of respect and acceptance, and a willingness to open one’s mind to try to see things from another’s point of view.
+ • Listening requires a high level of concentration and energy.
+ • It demands that we set aside our own thoughts and agendas, put ourselves in another’s shoes, and try to see the world through that person’s eyes.
+ • True listening requires that we suspend judgment, evaluation, and approval in an attempt to understand another’s frame of reference, emotions, and attitudes.
+ • When we listen effectively, we gain information that is valuable to understanding the problem as the other person sees it. We gain a greater understanding of the other person’s perception.
+ • When we demonstrate that we are truly curious, the coachee can tell.
 
 *Guidelines for Engaged Listening
  • Put aside distractions
@@ -217,19 +252,21 @@ Utilizing a Coaching Approach means:
  • 60% Through observing body language
  • 30% through the sound of the voice
  • 10% trhough the words spoken
+  SAY:
+  To be engaged lisners, we must listen with our ears, eyes and heart.
+  When we pay attention to a speaker's body language, we gain insight into how that person is feeling as well as the intensity of the feeling
+  Through careful attention to body language and verbal messages, we are able to develop hunches about what the speaker (or listener) is communicating.
+  We can then, through our reflective listening skills, check the accuracy of those hunches by expressing in our own words, our understanding of what is being communicated. 
 
 *Reflecting & Clarifying
  Key elements:
  • Reflect back with the person’s words or paraphrase to ensure that you heard what they were saying and heard the intention/emotion behind the message
  • Clarify to ensure you can give an accurate restatement without over interpretation
  • Reflect the nuance of what you heard – what are you sensing behind the words?
- SAY:
- Here are some key elements of reflecting and clarifying
- Reflect back with the key words or paraphrase to ensure you heard what the other person was saying as well as hearing the intention/emotion behind the message.
- Clarify so that you give an accurate restatement without over interpretation.
- Reflect the nuance behind the words – what are you sensing?
- In the Motivational Interviewing program, there our four key skills your staff learn; open-ended questions, (which we’ll be getting to), affirmations, reflections and summaries – OARS. 
- By strengthening your reflection skills, you are also modeling and reinforcing these skills with your staff.
+ • We use reflection in conjunction with engaged listening to clarify what the coachee is saying, create more of a connection with the coachee, and focus our listening.
+  • We want the person to know that they are being fully heard.
+  • It helps to identify and clarify the most important parts of what is being said, both the content and feelings.
+ • Often the coachee gives you a long story or lots of background; good reflection can clarify the key points so the coachee can confirm them and you can be sure to understand the situation the coachee is describing.
 
 *Purpose of Reflecting & Clarifying
 -Purpose of Reflecting
@@ -248,12 +285,12 @@ Utilizing a Coaching Approach means:
  • Build greater buy-in from staff, commitment to the solution, and more independence
  • This is also how we want to work with clients and families
  SAY: 
- Questioning is our way of exploring with intention. You don’t necessarily know what the end result will be. 
- You ask questions you don’t know the answer to in order to allow the Coachee to uncover using their own insight and understanding.
- Staff will have greater buy-in and commitment to the solution, will become more independent, and discover they have many of the answers they seek.
- This is also how we want to work with clients and families.
- That is part of what motivational interviewing is all about, which many of your staff have or will be taking in Engagement and Motivational Interviewing.
- One of the four key skills they are learning in OARS is asking open-ended questions.
+ • Questioning is our way of exploring with intention. You don’t necessarily know what the end result will be. 
+ • You ask questions you don’t know the answer to in order to allow the Coachee to uncover using their own insight and understanding.
+ • Staff will have greater buy-in and commitment to the solution, will become more independent, and discover they have many of the answers they seek.
+ • This is also how we want to work with clients and families.
+ • That is part of what motivational interviewing is all about, which many of your staff have or will be taking in Engagement and Motivational Interviewing.
+ • One of the four key skills they are learning is asking about openended questions, which is a part of OARS (Open-Ended questioning, Affirmation, Reflection, Summarization).
 
 *Qualities of Powerful Questions
  • They are real questions, not advice in disguise
@@ -274,12 +311,18 @@ Utilizing a Coaching Approach means:
   "Can you realistically take that on too?"
   "Could there be any other ways to approach that?"
   "Do you have any other options?"
- Solution: Convert closed questions to open ones by rephrasing them using "what" or "how."
+ Solution: To convert closed-ended questions to open-ended ones, first become aware of what you are asking. If you catch yourself before you’ve finished asking, stop, and restate the question. ou’ll know a closed-ended question because it can be answered with a simple “yes” or “no,” like in these examples: 
+   "Is there a way to do that and still keep evenings for family?"
+   "Can you realistically take that on too?"
+   "Could there be any other ways to approach that?"
+   "Do you have any other options?"
+  When you catch yourself in the act of asking a closed-ended question, here’s a quick technique for readjusting: Restate the question, but this time beginning with the word “What” or “How.” Here are the closed-ended questions listed above, but now made open using this technique:
   "What could you do and still keep evenings for family?"
   "How would your life change if you take that on too?"
   "How else could you approach that?"
   "What other options do you have?"
-• Mistake 2: Directive Questions
+
+• Mistake 2: Directive Questions(Solution-Oriented Questions)
  Directive questions are disguised pieces of advice that limit the coachee’s ability to explore their own solutions.
  Examples of Directive Questions:
   "Shouldn’t you check in with your supervisor before you act on this?"
@@ -292,86 +335,89 @@ Solution: Follow Your Curiosity. Instead of directing, broaden the question to a
  "How could you involve other people in your exercise routine?"
 
 • Mistake 3: Seeking the “One True Question”
- Some coaches hesitate, searching for the perfect question that will "unlock" everything, causing long awkward pauses and losing conversational momentum.
- Solution: Trust the Process. Coaching is about helping the coachee think ahead, not about finding the perfect question. Simple follow-ups like:
-  "Tell me more."
-  "What else?"
-  "Say more about that."
- Using the Observation and Question technique also helps:
- Repeat the most significant thing the coachee said and ask them to expand.
- Example: "You mentioned that X was frustrating. Tell me more about that."
+ One of the biggest stumbling blocks for beginning coaches is the quest for the Holy Grail: the question that will unlock the secrets of the universe. Before each question, there is a long, awkward pause while we search our mind for just the right thing to say, and meanwhile the momentum of the conversation is lost.
+ Solution: 
+  Trust the Process. Trust the Process. It’s not the perfect question that makes the difference: you need to help your coachee think a little farther down the road than they will on their own. Trust the process to help the coachee, not the greatness of your insight. One excellent technique when you are starting out as a coach is to learn a very simple query, like, “Tell me more,” or “What else?” The benefit of these short and sweet questions is that they don’t interrupt the person’s thought process at all. Another great tool is the Observation and Question technique. Pick out the most significant thing the coachee said, repeat their exact words, and ask them to expand on it, like this:
+  “ You mentioned that ________. Tell me more about that.”
+By varying the question, instead of “Tell me more …” try, “ ay more,” or “Expand on that.” or “What’s going on there?” ou can use this technique over and over without sounding stilted. It’s a great way to keep the focus on the coachee and not on your greatness as a coach.
 
 • Mistake 4: Rambling Questions
- Some coaches struggle to keep their questions concise and end up asking multiple questions at once, making it hard for the coachee to respond.
- Solution: Think, Then Talk.
-  Pause before speaking to formulate a clear, concise question.
-  Allow silence—it often leads the coachee to keep processing the issue without needing another question.
-  Ask the question once and stop talking to let the coachee lead.
+A variant of the “One Trust Question” problem is the rambling question. Some coaches can’t stop themselves from asking the same question in three different ways, while stringing together five different nuances or potential answers along the way. By the time the coach has finally articulated the question, the coachee is confused about what to answer and any conversational flow is lost.
+ANSWER:
+ • Allow yourself time to formulate the question.
+ • Let go of your agenda.
+Solution: Think, then talk. The propensity to ramble can usually be overcome in one of two ways. First, some coaches do this because they are still figuring out what they want to ask while they are asking. The solution is simple: allow it to be silent for a moment or two while you formulate the question. Our discomfort with silence is leading us to jump in before we are ready to ask. When you start, you’ll often find that a little silence will lead the coachee to continue to process without you asking any question at all.
+The second common cause of rambling is that we are overly concerned that our question be fully grasped. Our need to be understood comes from trying to lead the person down a particular path (in other words, we are in telling mode). Let go of your agenda, ask the question once, stop, and see where the coachee chooses to take it. Often, the most exciting coaching moments come when the coachee doesn’t understand what you are asking for!
 
 • Mistake 5: Interpretive Questions
- Interpretive questions put assumptions into the conversation, often creating resistance from the coachee.
- Example of an Interpretive Question:
-  A coachee says: “I’m frustrated with my project, not getting support, and keep looking at the clock.”
-  Asking: “How long have you hated your job?” assumes they hate their job, which may not be the case.
- Solution: Use Their Own Words.
-  Instead of assuming, ask:
-  "How long have you been frustrated with your current project?"
-  "What kind of support do you need that you aren’t getting?"
-  "What triggers you looking at the clock and wishing the day was over?"
+ just by asking a question we put a spin on what the coachee is saying. For instance, a coachee says, “I’m finding it tough lately to want to get up on Monday mornings. I’m frustrated with my current project, I’m not getting the support I need, and I keep finding myself looking at the clock and wishing the day were over.” A response like, “How long have you hated your job?” is likely to get a reaction from the coachee (“Wait a minute. I never said I hated my job …!”) The reason? Our coaching question reveals our interpretation of what the coachee said. We don’t know yet whether the coachee really hates their job, dislikes it, or even loves it and is just having a bad day. We only know what they said. Interpretive questions erode trust (because they put something on the coachee) and block the conversational flow as they respond to our analysis.
+ANSWER:
+ • Use the coachee’s own words.
+ • Don’t make assumptions.
+Solution: Use their own words. Interpretive questions are easy to correct — simply make a habit of incorporating the coachee’s own words in your questions. For the example above, we might ask, “How long have you been frustrated with your current project?” or “What kind of support do you need that you aren’t getting?” or “What triggers you looking at the clock and wishing the day was over?” The words in these questions are taken directly from the coachee’s own statements. Asking in this way prevents the supervisor from reacting to your spin and keeps the conversation moving in a productive direction.
 
 • Mistake 6: Rhetorical Questions
- Rhetorical questions are disguised judgments that can make coachees defensive.
- Examples of Rhetorical Questions:
-  "What were you thinking!?"
-  "Are you really going to throw away your career like that?"
-  "Isn’t that just a cop-out?"
- Solution: Reset Your Attitude.
-  Reflect on why you’re forming judgments. Ask yourself:
-  "Could I be wrong about this situation?"
-  "What potential do I see in this person?"
-  Instead of judgmental questions, ask constructive ones:
-  "What led to this decision?"
-  "What options have you considered?"
+ Although posed in question form, rhetorical questions are actually statements, often emotional or judgmental, of your own opinion of the situation:
+ •What were you thinking!?!
+ • Are you really going to throw away your career like that?
+ • Isn’t that just a cop-out?
+ • Wouldn’t you rather get along with your spouse?
+ Since we aren’t really asking for the other person’s opinion, these questions evoke either no response or a defensive one. Rhetorical questions are generally a sign that you’ve made a judgment or developed an attitude about the person you are coaching.
+ANSWER:
+ • Get in touch with your own feelings and triggers.
+ • Remind yourself of the coachee’s ability and potential to identify solutions.
+ Solution: Reset your attitude. Eliminating rhetorical questions requires a change in attitude toward the client. One way is to get in touch with what is going on inside you, and how this situation is pushing your emotional buttons. A second approach is to renew your internal picture of the coachee’s potential and ability. pend 15 to 20 minutes on these reflection questions to reorient yourself around believing in the supervisor:
+ • Why am I forming judgments here? How is focusing on the negative in this person meeting my own needs? What can I do about that?
+ • Could I be wrong about the situation? What am I missing?
+ • See if you can construct two possible scenarios where the coachee’s point of view is more valid than your own.
+ • What potential, ability and wisdom do I see in this person? What can they become? Why am I drawn to coach them?
 
 • Mistake 7: Leading Questions
- Leading questions subtly push the coachee toward a preferred answer.
- Examples of Leading Questions:
-  "How would you describe that feeling—discouraged?"
-  "We’ve processed this for weeks—are you ready to decide now?"
-  "It seems like option A gives quick results, but option B is better long-term. Which do you want?"
- Solution: Offer Multiple Options or the Opposite.
-  Instead of: "Are you disappointed?"
-  Ask: "Are you disappointed, excited, upset, or something else?"
-  Instead of: "Will this take time away from family?"
-  Add the opposite: "Or will this open up time for your family?"
+ Leading questions are ones that subtly point the coachee to a certain answer: the one the coach, knowingly or unknowingly, wants. While rhetorical questions are blatantly biased, with leading questions you might not even realize you are propelling the conversation in a certain direction. What response do you think the coach wants in the following examples?
+ • How would you describe that feeling: discouraged?
+ • We’ve spent a fair amount of time processing this over the last several weeks. Are you ready to make a decision on that now?
+ • It seems like this option would feel good today, but the other would give lasting satisfaction. Which one do you want to choose?
+ANSWER:
+ • Use open-ended questions.
+ • Remain neutral.
+ • When asking a leading question, you can redeem yourself by adding options.
+ Solution: Multiple options, or the opposite. When you catch yourself in the act of asking a leading question, you can often redeem it by creating multiple solutions.  Take the leading question, like, “Name that emotion. Are you disappointed?” and then add several more options on the end, “… are you disappointed, excited, upset, or  what?” With multiple options, the coachee has to choose how to respond instead of taking the easy way out and just agreeing with you. 
+Another excellent technique is one I call “Or the Opposite.” If you realize you’ve just asked a leading question, like, “If you take this new position, will it take time and energy away from your family?” paste an “or” and then ask the opposite question, “… or will this open up doors to get you the kind of family time you truly want?” Part of what makes these two techniques so useful is that you only have to change the very end of the question. You can realize you are asking a leading question midway through, and still change it on the fly without the client ever knowing what happened.
 
 • Mistake 8: Neglecting to Interrupt
- Some coachees talk for long periods, losing focus.
- Solution: Manage the Conversation.
-  Politely refocus:
-  "Let’s go back to what you mentioned earlier."
-  "You express yourself well—can I interrupt occasionally to keep us on track?"
+ No, that’s not a misprint. Being too timid to interrupt and refocus the conversation is more of a problem for beginning coaches than interrupting too much. While some coaches speak concisely, others can go on for ten minutes every time you ask an open-ended question. Too much irrelevant detail slows progress and blurs your focus.
+ANSWER:
+ • Interject with a question that brings the conversation back to focus.
+ • Be proactive and ask permission to interrupt as needed at the beginning of the coaching session.
+ Solution: Part of your job as a coach is managing the conversation, so when you see the coachee bunny-trailing, interject with a question that brings things back to focus. A proactive step is to openly discuss the rambling issue and secure permission to interrupt when needed.
+ • It caught my attention when you mentioned earlier that __________. Let’s come back to that.
+ • You are pretty good at expressing yourself. Would you mind if I interrupt occasionally to keep us on track so that we can make the most of our time?
 
 • Mistake 9: Interrupting Too Much
- Other coaches interrupt frequently, making coachees feel unheard.
- Solution: Count to Two Before Speaking.
-  After the coachee stops speaking, count silently: "One, one-thousand, two, one-thousand."
-  If they start speaking again, let them continue.
- Test if you're an interrupter:
- Record a session and note instances of:
- Interrupting – Speaking over the coachee.
- Talking Over – Continuing while the coachee tries to speak.
- Talking For – Finishing the coachee’s thoughts.
+ The other side of the interruption coin is that for some of us, often the most verbal or relational personalities, interrupting is a habit we aren’t very aware of. Frequent interrupters tend to be perceived as dishonoring and frustrating to talk to — not the kind of image to cultivate as a coach! Are you an interrupter?
+ ANSWER:
+ • Pause before replying to ensure the coachee has completed the thought.
+ • Practice self-awareness and recognize if this is your tendency.
+ Solution: Count to Two. Here’s a simple discipline you can practice to break the habit of interruption. Make a commitment that when you are coaching, you will count off two seconds (“one, one thousand, two, one thousand”) after the coachee has stopped speaking before you reply or ask a question. And if the person begins speaking again before the two seconds is up, good! Your goal as a coach is not to interject your ideas, but to help the coachee explore and implement their own.
+ If you want to find out if you’re an interrupter, here’s a revealing exercise:
+ • First, record one of your coaching B.
+ • Fast-forward to the middle. By then you’ll have forgotten you are recording yourself.
+ • Listen to the recording and make a note every time you hear each of the following three things:
+   1. Interruption: I interrupted or made a comment while the client was still talking.
+   2.Talking Over: I kept talking when the coachee tried to interrupt me or when we both started simultaneously, I failed to defer to the coachee.
+   3. Talking For: I finished the coachee’s thoughts for them.
 
 • Mistake 10: "Why" Questions
- "Why" questions often feel accusatory and make coachees defensive.
- Examples of "Why" Questions and Better Alternatives:
-  "Why did you turn down the job?"
-   → "What factors led to that decision?"
- "Why do you think she’d respond that way?"
-  → "What makes you anticipate that response?"
- "Why can’t you talk to him about that?"
-  → "What do you need to talk to him about that?"
+ “Why” questions tend to make people clam up because they challenge motives. When you pose a question like, “Why did you do that?” you are asking the coachee to defend and justify his or her actions, so don’t be surprised if she gets defensive!
+ ANSWER:
+ • Rephrase “Why” questions into “What” questions.
+ • Avoid “Why” questions.
+ Solution: Use “What” instead. It’s easy to rephrase questions to replace the “Why” with “What.” Here are several examples of “Why” questions that have been reworded with “What” to keep from putting people on the defensive.
+ • Rephrase “Why did you turn down the job?” to “What factors led you to turn down the job?”
+ • Rephrase “Why do you think she’d respond like that?” to “What’s causing you to anticipate that response?”
+ • Rephrase “Why can’t you talk to him about that” to “What do you need in order to talk to him about that?”
+ ASK:
+ • How prepared do you feel to use questioning in your coaching? Let’s put this to practice.
 
 
 *Feedback is
@@ -381,53 +427,49 @@ Solution: Follow Your Curiosity. Instead of directing, broaden the question to a
  • Actionable
  • Constructive
  • Focused on behaviors
- • The purpose of feedback is to offer support.
- SAY:
  The main purpose of giving feedback is to offer support.  When you give feedback from a Coaching perspective:
- The intent of feedback is to help the Coachee be more successful
- Establish your role in giving the Coachee feedback up front
- Good feedback enables the Coachee to self-assess and provide their own feedback
- The Coachee should know that part of your role is also to hold them accountable for the agreements that they make with you
+  • The intent of feedback is to help the Coachee be more successful
+  • Establish your role in giving the Coachee feedback up front
+  • Good feedback enables the Coachee to self-assess and provide their own feedback
+  • The Coachee should know that part of your role is also to hold them accountable for the agreements that they make with you
 
 *Feedback Tips
- • Frequent: Frequent enough to sustain and timely to alter behavior
- • Well-timed: Aware of emotional readiness of receiver
- • Direct: Direct and related to a performance or behacvioral issue
- • Helpful: Receiver perceives the motives of giver as constructive
- • Behavioral: Direct discussion to changing behaviors, not personal values or beliefs
- • Clear: Make sure your feedback and intention are understood
- SAY: 
- As Coaches, one of our key opportunity is to strengthen the people we Coach by giving them appropriate, honest, sincere, and positive feedback and assessment.
- Praise is like water for plants – some people are cacti and don’t need much, others are ferns and need a lot. It’s not a flaw, it’s just what they need.
- The key is to balance both giving the right amount of feedback, not spending all your time with the person who needs constant feedback, and not ignoring the person who doesn’t have the same need for it.
- Feedback should be a balance of positive and developmental – 4 to 1 ratio – 4 positive things to 1 developmental
- Use inquiry wherever possible – “What went well, what did you learn and what will you do differently next time?”
- Give feedback that can be heard
+ 1. Frequent: Feedback should be frequent enough to sustain and timely enough to alter behavior.
+ 2. Well-timed: Coaches need to be aware of the emotional readiness of the receiver and giver.
+ 3. Direct: Feedback needs to be direct and related to a performance or behavioral issue.
+ 4. Helpful: The feedback should be helpful, so that the receiver perceives the motives of the giver as constructive.
+ 5. Behavioral: Feedback should be a direct discussion to changing behaviors, not personal values or beliefs.
+ 6. Clear: As a coach, make sure your feedback and intentions are understood.
+ Another Key Points:
+ • As coaches, one of our key opportunities is to strengthen the people we coach by giving them appropriate, honest, sincere, and positive feedback and assessment.
+  • Praise is like water for plants — some people are cacti and don’t need much, others are ferns and need a lot. It’s not a flaw, it’s just what they need.
+  • The key is to balance giving the right amount of feedback, not spending all your time with the person who needs constant feedback, and not ignoring the person who doesn’t have the same need for it.
+  • [very important] Feedback should be a balance of positive and developmental: 4 to 1 ratio — 4 positive things to 1 developmental.
+  • Use inquiry whenever possible: “What went well, what did you learn, and what will you do differently next time?”
+  • Give feedback that can be heard.
 
-*How the coach can elicit feedback on the coaching session.
-1. Ask the Coachee what went well.
-2. Give your specific feedback as to what went well from your perspective.
-3. Ask the Coachee what he/she might do differently next time.
-4. Give your developmental feedback to the Coachee.
-5. Ask the Coachee what he/she would like to commit to going forward (as appropriate).
+*Feedback Steps: How the coach can elicit feedback on the coaching session.
+ 1. Ask the Coachee what went well.
+ 2. Give your specific feedback as to what went well from your perspective.
+ 3. Ask the Coachee what he/she might do differently next time.
+ 4. Give your developmental feedback to the Coachee.
+ 5. Ask the Coachee what he/she would like to commit to going forward (as appropriate).
 
-*Feedback Tips
- 1. Frequent: Frequent enough to sustain and timely to alter behavior.
- 2. Well-timed: Aware of emotional readiness of receiver and giver.
- 3. Direct: Direct and related to a performance issue.
- 4. Helpful: Receiver perceives the motives of giver as constructive.
- 5. Behavioral: Direct discussion to changing behaviors, not personal values or beliefs.
- 6. Clear: Make sure your feedback and intention are understood.
+*Barriers to Giving Good Feedback
+ 1. Fear of Confrontation
+ 2. Focus on Traits ("You are...")
+ 3. Not Enough Time
+ 4. Triggering Defensiveness
+ 5. Not Specific Enough
 
 *Accountability
  “Being accountable simply means being responsible for decisions made, actions taken, and assignments completed.*”
   Source: Boundless. “The Importance of Accountability.” Boundless Management. Boundless, 21 Jul. 2015. Retrieved 08 Dec. 2015
- SAY:
- The sixth skill of Coaching is accountability.  Accountability and feedback are related -you gain commitment through feedback and hold the Coachee accountable.
- Being accountable simply means being responsible for decisions made, actions taken, and assignments completed.
- The Coach performs a real service to the Coachee by holding that person accountable for his/her commitments.
- Holding someone accountable means “I care about you and your success, I remember what you said you would do, and I am following up with you to track your progress.”
- The accountability shifts – you ask what they committed to versus telling them what they didn’t do.
+ • The sixth skill of Coaching is accountability.  Accountability and feedback are related -you gain commitment through feedback and hold the Coachee accountable.
+ • Being accountable simply means being responsible for decisions made, actions taken, and assignments completed.
+ • The Coach performs a real service to the Coachee by holding that person accountable for his/her commitments.
+ • Holding someone accountable means “I care about you and your success, I remember what you said you would do, and I am following up with you to track your progress.”
+ • The accountability shifts – you ask what they committed to versus telling them what they didn’t do.
 
 *Keys to Holding Accountability
  • Clarity: What will you commit to? How will I hold you accountable?
@@ -435,11 +477,13 @@ Solution: Follow Your Curiosity. Instead of directing, broaden the question to a
  • Follow-up: Coach must follow up
     - Did you fulfill your commitment?
     - If not, what needs to happen for you to fulfill it?
- SAY:
- The language of commitment is powerful.
- There is a difference between “What are you going to do?” and “What will you commit to?”
- By using the language of commitment, Coach and Coachee both are clear on what the Coachee’s action items are, and it has the force of a declaration.
- People are more likely to do something if they commit to it.
+ • The language of commitment is powerful.
+ • There is a difference between “What are you going to do?” and “What will you commit to?”
+ • By using the language of commitment, Coach and Coachee both are clear on what the Coachee’s action items are, and it has the force of a declaration.
+ • People are more likely to do something if they commit to it.
+ • Clarity, ownership, and follow-up are all critical to accountability.
+  • Ask what has worked for you in holding your staff accountable.
+  • What works well in keeping you accountable? Should there be consequences? Who decides?
 
 
 More specific Coaching Questions for Each Step in the Coaching Process
@@ -565,3 +609,37 @@ What have other people tried in the past that has been successful?
  Who needs to be included or in alignment with these goals?
  Who are the key people in your network of support?
  What have you learned from this experience and how will we move forward?
+
+* Centering
+   We all have a lot on our minds. Centering is the first step in the coaching process and allows us to practice being present together. Being present ensures we are fully attentive as a coach and coachee and increases our options for responding. It is similar to clearing off your desk before an appointment.
+    Presence is the first coaching skill that we will explore and perhaps the most essential skill a coach uses. Being 100% present allows the coach to focus their attention on the coachee. It also allows  the coach to be a supportive listener and questioner.
+   Being present will aid us in the learning and retention of material and provide openness to the conversation.
+
+* Centering Script 
+  Example 1.
+   Mentally clear your minds. Clear your mental desk, open a blank screen in your mind.
+   Look at the picture. If you’re comfortable, close your eyes for a minute and reflect on what you have been learning about coaching and how you think it can begin helping.
+   If you don’t want to close your eyes, just focus on the picture. Totally focus on clearing your mind.
+   Take a slow, deep breath through your nose and slowly exhale through your mouth. Do that again.
+   Keep breathing.
+   When you are centered, gently open your eyes, nod and we will begin.
+
+ Example 2.
+  Let’s take a moment to center together. You may close your eyes or keep your eyes open downward to avoid distractions.
+  Exhale.
+  Then take a deep breath through your nose and hold for five seconds … Exhale completely through your mouth. Be aware of how deep breathing calms you … Take another breath … Hold it for five seconds … 
+   Exhale through your mouth.
+  Be aware of your thoughts and emotions … You may be feeling overwhelmed and thinking about all the things to do back at the office or at home … That takes you to another place … And you want to be present in this room … So take another deep breath … Focus on the learning ahead, shoulders, feet, etc. … Create openness to what will happen today. Gradually come back into the room with another deep breath.
+
+ Example 3.
+  Start off with a deep cleansing breath (one or two), then begin … Sit comfortably in your chair with your feet planted on the floor … 
+   Feel your feet rooted into the ground. 
+  Feel your back against the chair. Feel your hands on your lap [Pause.] You may hear external sounds or internal thoughts. Embrace these sounds and thoughts. 
+  Take a deep breath in through your nose and out through your mouth. Take a few deep breaths and release them.
+  Take a few more deep breaths. Become aware of your breaths. With each breath, allow your body to soften into the seat. 
+  Today you have the opportunity to set your intention for the day. Visualize yourself in a plush green field planting seeds, seeds of intention. [Pause.]
+  Your intention may be to be open to the coaching process, learning one or two skills. Or you may just want to be open to the process. 
+  Continue to be aware of your breathing [Pause.] Continue to breathe. Take your intention for the day and release it into the universe.
+  Breathe in your intention and breathe out to release it to the universe. 
+  Breathe in your intention again and release it to the universe. 
+  Let go of your intentions and slowly bring yourself back into the room. [Pause.]
